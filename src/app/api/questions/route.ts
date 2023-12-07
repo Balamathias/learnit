@@ -1,5 +1,4 @@
 import { strict_output } from "@/lib/gpt";
-import { getUserSession } from "@/lib/nextauth";
 import { QuizSchema } from "@/lib/validators/QuizSchema";
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
