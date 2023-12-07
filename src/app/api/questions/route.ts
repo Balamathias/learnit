@@ -9,7 +9,7 @@ export const maxDuration = 500;
 
 export async function POST(req: Request, res: Response) {
   try {
-    const session = await getUserSession();
+    // const session = await getUserSession();
     // if (!session?.user) {
     //   return NextResponse.json(
     //     { error: "You must be logged in to create a game." },
