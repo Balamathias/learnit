@@ -119,7 +119,7 @@ const QuizForm = () => {
                     </FormItem>
                 )}
                 />
-                <CardFooter className="flex flex-row px-0 gap-2.5 md:flex-row">
+                <CardFooter className="flex flex-col px-0 gap-2.5 md:flex-row">
                     <Button
                     className=""
                     variant={type === "mcq" || type === null ? 'default' : 'secondary'}
