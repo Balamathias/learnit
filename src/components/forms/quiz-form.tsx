@@ -119,9 +119,9 @@ const QuizForm = () => {
                     </FormItem>
                 )}
                 />
-                <CardFooter className="flex flex-col px-0 gap-2.5 md:flex-row">
+                <CardFooter className="flex flex-col items-start justify-start px-0 gap-2.5 md:flex-row">
                     <Button
-                    className=""
+                    className="flex-1"
                     variant={type === "mcq" || type === null ? 'default' : 'secondary'}
                     onClick={() => router.push("?type=mcq")}
                     type="button"
@@ -132,6 +132,7 @@ const QuizForm = () => {
                     onClick={() => router.push("?type=open_ended")}
                     variant={type === "open_ended" ? 'default' : 'secondary'}
                     type="button"
+                     className="flex-1"
                     >Open ended Questions</Button>
                 </CardFooter>
                 <Button type="submit" disabled={isLoading}>Start!</Button>
