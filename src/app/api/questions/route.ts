@@ -4,7 +4,7 @@ import { QuizSchema } from "@/lib/validators/QuizSchema";
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 export const maxDuration = 500;
 
 export async function POST(req: Request, res: Response) {
