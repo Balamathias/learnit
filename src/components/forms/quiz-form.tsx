@@ -22,6 +22,7 @@ import { useState } from "react"
 import { useMutation } from "@tanstack/react-query"
 import axios, { AxiosError } from "axios"
 import { toast } from 'sonner'
+import LoadingQuestions from "../LoadingQuestions"
 
 const QuizForm = () => {
 
@@ -37,12 +38,13 @@ const QuizForm = () => {
 
     const searchParams = useSearchParams()
     
-    const type = searchParams.get("type")
+    const type = searchParams.get("type") || "mcq"
+    const topic = searchParams.get("topic") || ""
 
     const form = useForm<z.infer<typeof QuizSchema>>({
       resolver: zodResolver(QuizSchema),
       defaultValues: {
-        topic: "",
+        topic: topic ?? "",
         amount: 5,
         type: "mcq"
       },
@@ -51,7 +53,7 @@ const QuizForm = () => {
     function onSubmit(values: z.infer<typeof QuizSchema>) {
       
       setShowLoader(true);
-      getQuestions({...values, type: !type ? 'mcq' : type as any}, {
+      getQuestions({...values, type: type as any}, {
         onError: (error) => {
           setShowLoader(false);
           if (error instanceof AxiosError) {
@@ -64,14 +66,18 @@ const QuizForm = () => {
         onSuccess: ({ gameId }: { gameId: string }) => {
           setFinishedLoading(true);
           setTimeout(() => {
-            if (form.getValues("type") === "mcq") {
+            if (type === "mcq") {
               router.push(`/quiz/mcq/${gameId}`);
-            } else if (form.getValues("type") === "open_ended") {
+            } else if (type === "open_ended") {
               router.push(`/quiz/open-ended/${gameId}`);
             }
-          }, 2000);
+          }, 1000);
         },
       })
+    }
+
+    if (showLoader) {
+      return <LoadingQuestions finished={finishedLoading} />
     }
 
   return (
@@ -116,7 +122,7 @@ const QuizForm = () => {
                 <CardFooter className="flex flex-row px-0 gap-2.5 md:flex-row">
                     <Button
                     className=""
-                    variant={type === "mcq" ? 'outline' : 'secondary'}
+                    variant={type === "mcq" || type === null ? 'default' : 'secondary'}
                     onClick={() => router.push("?type=mcq")}
                     type="button"
                     
@@ -124,7 +130,7 @@ const QuizForm = () => {
 
                     <Button
                     onClick={() => router.push("?type=open_ended")}
-                    variant={type === "open_ended" ? 'outline' : 'secondary'}
+                    variant={type === "open_ended" ? 'default' : 'secondary'}
                     type="button"
                     >Open ended Questions</Button>
                 </CardFooter>

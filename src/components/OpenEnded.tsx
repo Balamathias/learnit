@@ -7,6 +7,7 @@ import { Loader2, Timer, ChevronRightCircleIcon } from "lucide-react";
 import React from "react";
 import {
   Card,
+  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
@@ -50,7 +51,7 @@ const OpenEnded = ({ game }: Props) => {
   const { mutate: checkAnswer, isPending: isChecking } = useMutation({
     mutationFn: async () => {
       let filledAnswer = blankAnswer;
-      document.querySelectorAll("#user-blank-input").forEach((input) => {
+      document.querySelectorAll("#user-blank-input").forEach((input: any) => {
         filledAnswer = filledAnswer.replace("_____", input.value);
         input.value = "";
       });
@@ -75,9 +76,9 @@ const OpenEnded = ({ game }: Props) => {
   const handleNext = React.useCallback(() => {
     checkAnswer(undefined, {
       onSuccess: ({ percentageSimilar }) => {
-        toast.info(`Your answer is ${percentageSimilar}% similar to the correct answer`);
+        toast.info(`Your answer is ${percentageSimilar}% similar to the correct answer`, {duration: 5000});
         setAveragePercentage((prev) => {
-          return (prev + percentageSimilar) / (questionIndex + 1);
+          return Math.round((prev + percentageSimilar) / (questionIndex + 1));
         });
         if (questionIndex === game.questions.length - 1) {
           endGame();
@@ -119,6 +120,7 @@ const OpenEnded = ({ game }: Props) => {
             {game.topic}
         </p>
         <div className="text-primary flex gap-2 items-center">
+          <OpenEndedPercentage percentage={averagePercentage} />
            <Timer size={15} />
            <span>{formatTimeDelta(differenceInSeconds(now, game.timeStarted))}</span> 
         </div>
@@ -126,10 +128,18 @@ const OpenEnded = ({ game }: Props) => {
       <Card className='mt-5'>
           <CardHeader className='flex gap-2'>
             <span className='text-blue-500'>Question {questionIndex + 1} of {game.questions.length}</span>
-            <CardTitle>{currentQuestion.question}</CardTitle>
+            <CardTitle>{currentQuestion?.question}</CardTitle>
           </CardHeader>
        </Card>
-        <div>
+        <Card className="mt-6 py-8">
+          <CardHeader>
+            <CardTitle>Fill the blanks with the appropriate Keywords.</CardTitle>
+          </CardHeader>
+          <CardContent>
+          <BlankAnswerInput answer={currentQuestion.answer} setBlankAnswer={setBlankAnswer} />
+          </CardContent>
+        </Card>
+        <div className="mt-4">
             <Button
             variant="default"
             className="mt-2"

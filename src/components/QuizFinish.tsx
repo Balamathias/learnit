@@ -19,14 +19,14 @@ type Props = {
 const QuizFinish = ({now, game}: Props) => {
   return (
     <MaxWrapper className="absolute flex md:flex-row gap-5 flex-col justify-center -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-    <Card className="px-4 py-2 mt-2 font-semibold w-full h-[290px] md:w-[290px] flex justify-center items-center bg-gradient-to-r from-green-400 to-blue-500">
+    <Card className="px-4 py-2 mt-2 font-semibold w-full h-[290px] md:w-[290px] flex justify-center items-center">
       <p>You Completed in{" "}
       {formatTimeDelta(differenceInSeconds(now, game.timeStarted))}</p>
     </Card>
     <Card className=''>
     <Link
       href={`/statistics/${game.id}`}
-      className={cn(buttonVariants({ size: "lg" }), "w-full md:w-[290px] h-[290px] bg-gradient-to-r from-cyan-500 to-blue-500")}
+      className={cn(buttonVariants({ variant: "secondary" }), "w-full md:w-[290px] h-[290px]")}
     >
       <p>
       View Statistics

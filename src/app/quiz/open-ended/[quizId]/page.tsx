@@ -36,7 +36,7 @@ const QuizDetailPage = async ({params: {quizId}}: Props) => {
       }
     })
 
-    if (!quiz || quiz.gameType !== 'open_ended') return redirect('/quiz')
+    if (!quiz || quiz.gameType !== 'open_ended' || !quiz.questions.length) return redirect('/quiz')
 
 
   return (

@@ -143,7 +143,7 @@ const MCQ = ({ game }: Props) => {
       <Card className='mt-5'>
           <CardHeader className='flex gap-2'>
             <span className='text-blue-500'>Question {questionIndex + 1} of {game.questions.length}</span>
-            <CardTitle>{currentQuestion.question}</CardTitle>
+            <CardTitle>{currentQuestion?.question}</CardTitle>
           </CardHeader>
        </Card>
 

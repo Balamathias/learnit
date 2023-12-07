@@ -30,7 +30,7 @@ async function Page() {
                 <Recents />
             </div>
             <HotTopics />
-            <QuizHistory />
+            <QuizHistory/>
         </div>
       </MaxWrapper>
    </main>

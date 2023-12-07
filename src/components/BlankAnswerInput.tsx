@@ -30,7 +30,7 @@ const BlankAnswerInput = ({ answer, setBlankAnswer }: Props) => {
   }, [answer, keywords, setBlankAnswer]);
 
   return (
-    <div className="flex justify-start w-full mt-4">
+    <div className="flex justify-start w-full mt-4 space-y-8">
       <h1 className="text-xl font-semibold">
         {/* replace the blanks with input elements */}
         {answerWithBlanks.split(blank).map((part, index) => {
@@ -42,7 +42,7 @@ const BlankAnswerInput = ({ answer, setBlankAnswer }: Props) => {
               ) : (
                 <input
                   id="user-blank-input"
-                  className="text-center border-b-2 border-primary dark:border-white w-28 focus:border-2 focus:border-b-4 focus:outline-none"
+                  className="text-center border-b-2 border-orange-500 mx-3 w-32 focus:border-2 focus:border-b-4 focus:outline-none focus:border-green-600"
                   type="text"
                 />
               )}
