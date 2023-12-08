@@ -28,7 +28,7 @@ const MCQ = ({ game }: Props) => {
           correct_answers: 0,
           wrong_answers: 0,
         });
-        const [selectedChoice, setSelectedChoice] = React.useState<number>(0);
+        const [selectedChoice, setSelectedChoice] = React.useState<number>(20);
         const [now, setNow] = React.useState(new Date());
         const alphas = ["A", "B", "C", "D"]
       
@@ -81,12 +81,14 @@ const MCQ = ({ game }: Props) => {
                   correct_answers: stats.correct_answers + 1,
                 }));
                 toast.success("Correct Answer! You got that right!")
+                setSelectedChoice(20)
               } else {
                 setStats((stats) => ({
                   ...stats,
                   wrong_answers: stats.wrong_answers + 1,
                 }));
                 toast.error("OOPs! You failed this one! Better luck!")
+                setSelectedChoice(20)
               }
               if (questionIndex === game.questions.length - 1) {
                 endGame();
@@ -151,7 +153,7 @@ const MCQ = ({ game }: Props) => {
         {options.map((option, index) => {
             return (
                 <Button
-                key={option}
+                key={option + `-${index}`}
                 variant={selectedChoice === index ? "default" : "outline"}
                 className="justify-start w-full py-8 mb-4 whitespace-normal"
                 onClick={() => setSelectedChoice(index)}

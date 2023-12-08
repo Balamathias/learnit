@@ -36,7 +36,18 @@ const QuizDetailPage = async ({params: {quizId}}: Props) => {
       }
     })
 
-    if (!quiz || quiz.gameType !== 'open_ended' || !quiz.questions.length) return redirect('/quiz')
+    if (!quiz || quiz.gameType !== 'open_ended') return redirect('/quiz')
+    if (!quiz.questions.length) {
+      await prisma.game.delete({
+        where: {
+          id: quiz.id
+        },
+        include: {
+          questions: true
+        }
+      })
+      return redirect('/quiz')
+    }
 
 
   return (
