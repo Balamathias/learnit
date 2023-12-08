@@ -5,9 +5,7 @@ import axios from "axios";
 import { getUserSession } from "@/lib/nextauth";
 import { QuizSchema } from "@/lib/validators/QuizSchema";
 
-export const config = {
-  runtime: "edge",
-}
+export const runtime = "edge"
 
 export async function POST(req: Request, res: Response) {
   try {

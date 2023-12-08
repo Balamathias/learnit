@@ -7,9 +7,7 @@ import { ZodError } from "zod";
 // export const runtime = "nodejs";
 // export const maxDuration = 10;
 
-export const config = {
-  runtime: "edge",
-};
+export const runtime = "edge"
 
 export async function POST(req: Request, res: Response) {
   try {
