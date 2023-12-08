@@ -4,6 +4,7 @@ import { ModeToggle } from "./ModeToggle"
 import SignInButton from "./SignInButton"
 import UserAccountNav from "./UserAccountNav"
 import { getUserSession } from "@/lib/nextauth"
+import Image from "next/image"
 
 
 const Navbar = async () => {
@@ -18,7 +19,8 @@ const Navbar = async () => {
 
                         <div className="flex items-center justify-center ml-2 lg:ml-0">
                             <Link href={'/'} className="flex text-3xl items-center justify ml-2 lg:ml-0 center">
-                                {"Learnit"}
+                                <Image src={'/logo.png'} alt="logo" className="w-10 h-10 object-cover" width={16} height={16} /> 
+                                <span className="md:block hidden ml-2">{"Learnit"}</span>
                             </Link>
                         </div>
                     </div>

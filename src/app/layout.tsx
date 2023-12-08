@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils'
 import Providers from '@/components/Providers'
 import Navbar from '@/components/Navbar'
 import { Toaster } from 'sonner'
+import Footer from '@/components/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -29,6 +30,7 @@ export default function RootLayout({
             <main className='min-h-screen bg-background pt-20'>
             {children}
             </main>
+            <Footer />
           </Providers>
           <Toaster richColors theme='dark' />
         </body>

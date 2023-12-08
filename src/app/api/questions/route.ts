@@ -10,14 +10,14 @@ export const maxDuration = 10;
 export async function POST(req: Request, res: Response) {
   try {
     const session = await getUserSession();
-    if (!session?.user) {
-      return NextResponse.json(
-        { error: "You must be logged in to create a game." },
-        {
-          status: 401,
-        }
-      );
-    }
+    // if (!session?.user) {
+    //   return NextResponse.json(
+    //     { error: "You must be logged in to create a game." },
+    //     {
+    //       status: 401,
+    //     }
+    //   );
+    // }
     const body = await req.json();
     const { amount, topic, type } = QuizSchema.parse(body);
     let questions: any;

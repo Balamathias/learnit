@@ -26,7 +26,7 @@ export default async function Home() {
         <p className="text-primary">So what are you waiting for? Start creating your own quizzes today!</p>
 
         <div className="flex sm:flex-row flex-col gap-4 py-4">
-          <SignInButton >
+          <SignInButton icon >
             Continue With Google
           </SignInButton>
         </div>
