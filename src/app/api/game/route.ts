@@ -5,6 +5,10 @@ import axios from "axios";
 import { getUserSession } from "@/lib/nextauth";
 import { QuizSchema } from "@/lib/validators/QuizSchema";
 
+
+export const runtime = "nodejs";
+export const maxDuration = 500;
+
 export async function POST(req: Request, res: Response) {
   try {
     const session = await getUserSession();
