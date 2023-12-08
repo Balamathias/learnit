@@ -31,7 +31,7 @@ const Statistics = async ({ params: { gameId } }: Props) => {
   });
   if (!game || !game.questions.length) {
     <Toast type="info" message="Sorry, we could not find questions for this quiz. Are you sure it exists?" />
-    return redirect("/");
+    return redirect("/dashboard");
   }
 
   let accuracy: number = 0;
