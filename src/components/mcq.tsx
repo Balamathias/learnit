@@ -132,7 +132,7 @@ const MCQ = ({ game }: Props) => {
 
   return (
     <div className="md:w-[80vw] max-w-4xl w-[90vw] p-2">
-      <div className='flex justify-between items-center'>
+      <div className='flex justify-between max-sm:flex-col max-sm:gap-2 max-sm:items-start items-center'>
         <p className='text-blue-600 text-3xl'>
             {game.topic}
         </p>
@@ -152,19 +152,19 @@ const MCQ = ({ game }: Props) => {
         <div className="flex flex-col items-center w-full mt-4">
         {options.map((option, index) => {
             return (
-                <Button
+                <button
                 key={option + `-${index}`}
-                variant={selectedChoice === index ? "default" : "outline"}
-                className="justify-start w-full py-8 mb-4 whitespace-normal"
+                // variant={selectedChoice === index ? "default" : "outline"}
+                className={(selectedChoice === index ? "bg-primary" : "") + " justify-start flex w-full py-8 mb-4 whitespace-normal border border-secondary rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 shadow hover:bg-zinc-100 dark:hover:bg-zinc-900"}
                 onClick={() => setSelectedChoice(index)}
                 >
-                <div className="flex justify-start items-center">
-                    <p className="p-2 px-3 mr-5 border rounded-md">
+                <div className="flex justify-start items-start">
+                    <p className="p-2 px-3 mx-3 border rounded-md">
                     {alphas[index]}
                     </p>
-                    <div className="text-start">{option}</div>
+                    <div className="text-start pr-2">{option}</div>
                 </div>
-                </Button>
+                </button>
             );
             })}
         </div>
