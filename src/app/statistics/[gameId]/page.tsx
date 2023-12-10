@@ -62,7 +62,7 @@ const Statistics = async ({ params: { gameId } }: Props) => {
               <LucideLayoutDashboard className="mr-2" />
               Back to Dashboard
             </Link>
-            <Link href={`/quiz/${game.gameType}/${gameId}`} className={buttonVariants({variant: "outline"})}>
+            <Link href={`/quiz/${game.gameType.replace("_", "-")}/${gameId}`} className={buttonVariants({variant: "outline"})}>
               <RedoIcon className="mr-2 text-blue-600" />
               Quiz again
             </Link>
