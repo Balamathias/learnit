@@ -155,7 +155,7 @@ const MCQ = ({ game }: Props) => {
                 <button
                 key={option + `-${index}`}
                 // variant={selectedChoice === index ? "default" : "outline"}
-                className={(selectedChoice === index ? "bg-primary" : "") + " justify-start flex w-full py-8 mb-4 whitespace-normal border border-secondary rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 shadow hover:bg-zinc-100 dark:hover:bg-zinc-900"}
+                className={(selectedChoice === index ? "bg-primary" : "") + " justify-start flex w-full py-8 mb-4 whitespace-normal border border-secondary rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 shadow hover:opacity-50 focus:bg-primary"}
                 onClick={() => setSelectedChoice(index)}
                 >
                 <div className="flex justify-start items-start">
