@@ -17,10 +17,19 @@ const HistoryComponent = async ({ limit, userId }: Props) => {
     orderBy: {
       timeStarted: "desc",
     },
+    include: {
+      questions: {
+        select: {
+          question: true
+        }
+      }
+    },
   });
+  const filtered = games.filter((value) => Boolean(value.questions.length))
   return (
     <div className="space-y-8 py-6">
-      {games.map((game) => {
+      {filtered.map((_game) => {
+        const game = _game.questions.length ? _game : games[games.indexOf(_game) + 1]!!
         return (
           <div className="flex items-center justify-between" key={game.id}>
             <div className="flex items-center">
